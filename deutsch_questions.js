@@ -9,8 +9,19 @@ window.QUESTION_BANK = {
     { question: "klein", options: ["Artikel", "Nomen", "Adjektiv", "Verb"], answer: "Adjektiv", explanation: "klein ist ein Adjektiv." },
     { question: "der", options: ["Artikel", "Nomen", "Adjektiv", "Verb"], answer: "Artikel", explanation: "der ist ein Artikel." },
     { question: "lacht", options: ["Artikel", "Nomen", "Adjektiv", "Verb"], answer: "Verb", explanation: "lacht ist ein Verb." },
-    { question: "fröhlich", options: ["Artikel", "Nomen", "Adjektiv", "Verb"], answer: "Adjektiv", explanation: "fröhlich ist ein Adjektiv." }
+    { question: "fröhlich", options: ["Artikel", "Nomen", "Adjektiv", "Verb"], answer: "Adjektiv", explanation: "fröhlich ist ein Adjektiv." },
+    { question: "Tisch", options: ["Artikel", "Nomen", "Adjektiv", "Verb"], answer: "Nomen", explanation: "Tisch ist ein Nomen." },
+    { question: "springt", options: ["Artikel", "Nomen", "Adjektiv", "Verb"], answer: "Verb", explanation: "springt ist ein Verb." },
+    { question: "leise", options: ["Artikel", "Nomen", "Adjektiv", "Verb"], answer: "Adjektiv", explanation: "leise ist ein Adjektiv." },
+    { question: "das", options: ["Artikel", "Nomen", "Adjektiv", "Verb"], answer: "Artikel", explanation: "das ist ein Artikel." },
+    { question: "Sonne", options: ["Artikel", "Nomen", "Adjektiv", "Verb"], answer: "Nomen", explanation: "Sonne ist ein Nomen." },
+    { question: "male", options: ["Artikel", "Nomen", "Adjektiv", "Verb"], answer: "Verb", explanation: "male ist ein Verb." },
+    { question: "hell", options: ["Artikel", "Nomen", "Adjektiv", "Verb"], answer: "Adjektiv", explanation: "hell ist ein Adjektiv." },
+    { question: "ein", options: ["Artikel", "Nomen", "Adjektiv", "Verb"], answer: "Artikel", explanation: "ein ist ein Artikel." },
+    { question: "Kind", options: ["Artikel", "Nomen", "Adjektiv", "Verb"], answer: "Nomen", explanation: "Kind ist ein Nomen." },
+    { question: "trinkt", options: ["Artikel", "Nomen", "Adjektiv", "Verb"], answer: "Verb", explanation: "trinkt ist ein Verb." }
   ],
+
   artikel: [
     { question: "___ Apfel", options: ["der", "die", "das"], answer: "der", explanation: "Richtig ist der Apfel." },
     { question: "___ Schule", options: ["der", "die", "das"], answer: "die", explanation: "Richtig ist die Schule." },
@@ -21,8 +32,19 @@ window.QUESTION_BANK = {
     { question: "___ Hund", options: ["der", "die", "das"], answer: "der", explanation: "Richtig ist der Hund." },
     { question: "___ Katze", options: ["der", "die", "das"], answer: "die", explanation: "Richtig ist die Katze." },
     { question: "___ Fenster", options: ["der", "die", "das"], answer: "das", explanation: "Richtig ist das Fenster." },
-    { question: "___ Vogel", options: ["der", "die", "das"], answer: "der", explanation: "Richtig ist der Vogel." }
+    { question: "___ Vogel", options: ["der", "die", "das"], answer: "der", explanation: "Richtig ist der Vogel." },
+    { question: "___ Lampe", options: ["der", "die", "das"], answer: "die", explanation: "Richtig ist die Lampe." },
+    { question: "___ Brot", options: ["der", "die", "das"], answer: "das", explanation: "Richtig ist das Brot." },
+    { question: "___ Baum", options: ["der", "die", "das"], answer: "der", explanation: "Richtig ist der Baum." },
+    { question: "___ Tasche", options: ["der", "die", "das"], answer: "die", explanation: "Richtig ist die Tasche." },
+    { question: "___ Wasser", options: ["der", "die", "das"], answer: "das", explanation: "Richtig ist das Wasser." },
+    { question: "___ Stuhl", options: ["der", "die", "das"], answer: "der", explanation: "Richtig ist der Stuhl." },
+    { question: "___ Sonne", options: ["der", "die", "das"], answer: "die", explanation: "Richtig ist die Sonne." },
+    { question: "___ Heft", options: ["der", "die", "das"], answer: "das", explanation: "Richtig ist das Heft." },
+    { question: "___ Mond", options: ["der", "die", "das"], answer: "der", explanation: "Richtig ist der Mond." },
+    { question: "___ Uhr", options: ["der", "die", "das"], answer: "die", explanation: "Richtig ist die Uhr." }
   ],
+
   wortbau: [
     { question: "frei -> ?", options: ["Freiung", "Freiheit", "Freikeit"], answer: "Freiheit", explanation: "frei wird zu Freiheit." },
     { question: "möglich -> ?", options: ["Möglichkeit", "Möglichheit", "Möglichung"], answer: "Möglichkeit", explanation: "möglich wird zu Möglichkeit." },
@@ -33,8 +55,19 @@ window.QUESTION_BANK = {
     { question: "dunkel -> ?", options: ["Dunkelung", "Dunkelkeit", "Dunkelheit"], answer: "Dunkelheit", explanation: "dunkel wird zu Dunkelheit." },
     { question: "bewegen -> ?", options: ["Bewegkeit", "Bewegung", "Bewegheit"], answer: "Bewegung", explanation: "bewegen wird zu Bewegung." },
     { question: "höflich -> ?", options: ["Höflichkeit", "Höflichung", "Höflichheit"], answer: "Höflichkeit", explanation: "höflich wird zu Höflichkeit." },
-    { question: "einladen -> ?", options: ["Einladung", "Einladkeit", "Einladheit"], answer: "Einladung", explanation: "einladen wird zu Einladung." }
+    { question: "einladen -> ?", options: ["Einladung", "Einladkeit", "Einladheit"], answer: "Einladung", explanation: "einladen wird zu Einladung." },
+    { question: "sicher -> ?", options: ["Sicherung", "Sicherheit", "Sicherkeit"], answer: "Sicherheit", explanation: "sicher wird zu Sicherheit." },
+    { question: "klar -> ?", options: ["Klarung", "Klarheit", "Klarkeit"], answer: "Klarheit", explanation: "klar wird zu Klarheit." },
+    { question: "freundlich -> ?", options: ["Freundlichheit", "Freundlichkeit", "Freundlichung"], answer: "Freundlichkeit", explanation: "freundlich wird zu Freundlichkeit." },
+    { question: "offen -> ?", options: ["Offenkeit", "Offenheit", "Offenung"], answer: "Offenheit", explanation: "offen wird zu Offenheit." },
+    { question: "hoffen -> ?", options: ["Hoffung", "Hoffkeit", "Hoffnung"], answer: "Hoffnung", explanation: "hoffen wird zu Hoffnung." },
+    { question: "erklären -> ?", options: ["Erklärung", "Erklärheit", "Erklärkeit"], answer: "Erklärung", explanation: "erklären wird zu Erklärung." },
+    { question: "rechnen -> ?", options: ["Rechnung", "Rechenkeit", "Rechenheit"], answer: "Rechnung", explanation: "rechnen wird zu Rechnung." },
+    { question: "zeichnen -> ?", options: ["Zeichenung", "Zeichnung", "Zeichkeit"], answer: "Zeichnung", explanation: "zeichnen wird zu Zeichnung." },
+    { question: "löschen -> ?", options: ["Löschung", "Löschheit", "Löschkeit"], answer: "Löschung", explanation: "löschen wird zu Löschung." },
+    { question: "wahr -> ?", options: ["Wahrkeit", "Wahrung", "Wahrheit"], answer: "Wahrheit", explanation: "wahr wird zu Wahrheit." }
   ],
+
   pronomen: [
     { question: "Der Junge liest. ___ sitzt am Tisch.", options: ["Er", "Sie", "Es"], answer: "Er", explanation: "Der Junge passt zu Er." },
     { question: "Die Katze schläft. ___ ist müde.", options: ["Er", "Sie", "Es"], answer: "Sie", explanation: "Die Katze passt zu Sie." },
@@ -45,6 +78,16 @@ window.QUESTION_BANK = {
     { question: "Die Blume ist neu. ___ ist schön.", options: ["Er", "Sie", "Es"], answer: "Sie", explanation: "Die Blume passt zu Sie." },
     { question: "Das Fahrrad ist rot. ___ steht draußen.", options: ["Er", "Sie", "Es"], answer: "Es", explanation: "Das Fahrrad passt zu Es." },
     { question: "Der Opa winkt. ___ ist freundlich.", options: ["Er", "Sie", "Es"], answer: "Er", explanation: "Der Opa passt zu Er." },
-    { question: "Die Schwester lacht. ___ ist fröhlich.", options: ["Er", "Sie", "Es"], answer: "Sie", explanation: "Die Schwester passt zu Sie." }
+    { question: "Die Schwester lacht. ___ ist fröhlich.", options: ["Er", "Sie", "Es"], answer: "Sie", explanation: "Die Schwester passt zu Sie." },
+    { question: "Der Lehrer fragt. ___ hört zu.", options: ["Er", "Sie", "Es"], answer: "Er", explanation: "Der Lehrer passt zu Er." },
+    { question: "Die Mutter ruft. ___ wartet draußen.", options: ["Er", "Sie", "Es"], answer: "Sie", explanation: "Die Mutter passt zu Sie." },
+    { question: "Das Auto stoppt. ___ ist sehr leise.", options: ["Er", "Sie", "Es"], answer: "Es", explanation: "Das Auto passt zu Es." },
+    { question: "Der Bruder rennt. ___ ist schnell.", options: ["Er", "Sie", "Es"], answer: "Er", explanation: "Der Bruder passt zu Er." },
+    { question: "Die Oma liest. ___ sitzt im Sessel.", options: ["Er", "Sie", "Es"], answer: "Sie", explanation: "Die Oma passt zu Sie." },
+    { question: "Das Baby schläft. ___ ist ganz ruhig.", options: ["Er", "Sie", "Es"], answer: "Es", explanation: "Das Baby passt zu Es." },
+    { question: "Der Vogel singt. ___ ist im Baum.", options: ["Er", "Sie", "Es"], answer: "Er", explanation: "Der Vogel passt zu Er." },
+    { question: "Die Ente schwimmt. ___ ist im Wasser.", options: ["Er", "Sie", "Es"], answer: "Sie", explanation: "Die Ente passt zu Sie." },
+    { question: "Das Fenster ist offen. ___ ist groß.", options: ["Er", "Sie", "Es"], answer: "Es", explanation: "Das Fenster passt zu Es." },
+    { question: "Der Freund kommt. ___ bringt einen Ball.", options: ["Er", "Sie", "Es"], answer: "Er", explanation: "Der Freund passt zu Er." }
   ]
 };
