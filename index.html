@@ -315,6 +315,7 @@
     let quizEl = null;
     let confettiLayer = null;
     let autoNextTimer = null;
+    let resultConfettiTimer = null;
 
     function bindElements() {
       progressEl = document.getElementById("progress");
@@ -333,6 +334,22 @@
         clearTimeout(autoNextTimer);
         autoNextTimer = null;
       }
+    }
+
+    function stopResultConfettiLoop() {
+      if (resultConfettiTimer) {
+        clearInterval(resultConfettiTimer);
+        resultConfettiTimer = null;
+      }
+    }
+
+    function startResultConfettiLoop() {
+      stopResultConfettiLoop();
+      resultConfettiTimer = setInterval(() => {
+        const x = Math.random() * window.innerWidth;
+        const y = 70 + Math.random() * 140;
+        spawnConfetti(x, y);
+      }, 550);
     }
 
     function shuffle(arr) {
@@ -377,6 +394,7 @@
       const q = questions[current];
       answered = false;
       clearAutoNext();
+      stopResultConfettiLoop();
       document.body.classList.remove("celebrate");
       progressEl.textContent = `Frage ${current + 1} / ${questions.length}`;
       pointsEl.textContent = `Punkte: ${score}`;
@@ -470,6 +488,7 @@
 
     function showResult() {
       clearAutoNext();
+      stopResultConfettiLoop();
       progressEl.textContent = "Fertig";
       pointsEl.textContent = `Punkte: ${score}`;
       previousWrongPool = [...wrongQuestions];
@@ -486,6 +505,13 @@
         </div>
       `;
 
+      if (score === QUESTIONS_PER_RUN) {
+        triggerCelebrateBackground();
+        startResultConfettiLoop();
+      } else {
+        document.body.classList.remove("celebrate");
+      }
+
       document.getElementById("restartBtn").addEventListener("click", restartQuiz);
     }
 
@@ -500,6 +526,7 @@
 
     function restartQuiz() {
       clearAutoNext();
+      stopResultConfettiLoop();
       current = 0;
       score = 0;
       makeQuestions();
