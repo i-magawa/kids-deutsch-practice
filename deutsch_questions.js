@@ -39,8 +39,6 @@ window.QUESTION_BANK = {
     { question: "kalt", options: ["Artikel", "Nomen", "Adjektiv", "Verb"], answer: "Adjektiv", explanation: "kalt ist ein Adjektiv." },
     { question: "warm", options: ["Artikel", "Nomen", "Adjektiv", "Verb"], answer: "Adjektiv", explanation: "warm ist ein Adjektiv." },
     { question: "hoch", options: ["Artikel", "Nomen", "Adjektiv", "Verb"], answer: "Adjektiv", explanation: "hoch ist ein Adjektiv." },
-    { question: "neu", options: ["Artikel", "Nomen", "Adjektiv", "Verb"], answer: "Adjektiv", explanation: "neu ist ein Adjektiv." },
-    { question: "oft", options: ["Artikel", "Nomen", "Adjektiv", "Verb"], answer: "Adjektiv", explanation: "oft zählt hier zur Beschreibung." },
-    { question: "gern", options: ["Artikel", "Nomen", "Adjektiv", "Verb"], answer: "Adjektiv", explanation: "gern zählt hier zur Beschreibung." }
+    { question: "neu", options: ["Artikel", "Nomen", "Adjektiv", "Verb"], answer: "Adjektiv", explanation: "neu ist ein Adjektiv." }
   ]
 };
