@@ -41,21 +41,24 @@
     .card {
       width: 100%;
       max-width: 760px;
+      height: min(760px, calc(100vh - 32px));
       background: var(--card);
       border: none;
       border-radius: 18px;
       padding: 24px;
       box-shadow: 0 8px 26px rgba(30, 50, 60, 0.08);
+      display: flex;
+      flex-direction: column;
     }
 
     .top {
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-end;
       align-items: center;
       gap: 12px;
       margin-bottom: 14px;
       color: var(--muted);
-      font-size: 18px;
+      font-size: 16px;
       font-weight: 600;
     }
 
@@ -193,11 +196,16 @@
     }
 
     .actions {
-      margin-top: 16px;
+      margin-top: 0;
+      padding-top: 0;
       display: flex;
       justify-content: center;
-      min-height: 64px;
+      min-height: 62px;
       align-items: center;
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 22px;
     }
 
     .next-btn {
@@ -239,11 +247,32 @@
       font-weight: 800;
     }
 
+    .stars {
+      font-size: 40px;
+      line-height: 1;
+      letter-spacing: 2px;
+      margin: 0 0 10px;
+      user-select: none;
+    }
+
+    .star-on {
+      color: #f2c94c;
+    }
+
+    .star-off {
+      color: #bcc5ca;
+    }
+
     .result-text {
       color: var(--text);
-      font-size: 22px;
+      font-size: 30px;
       font-weight: 700;
-      margin: 0 0 8px;
+      margin: 0 0 12px;
+      min-height: 40px;
+    }
+
+    .result-text.hidden {
+      visibility: hidden;
     }
 
     .small {
@@ -254,8 +283,16 @@
 
     #quiz {
       min-height: 520px;
+      flex: 1;
       display: flex;
       flex-direction: column;
+      position: relative;
+      padding-bottom: 96px;
+    }
+
+    body.result-mode .title,
+    body.result-mode #points {
+      visibility: hidden;
     }
 
     @media (max-width: 600px) {
@@ -266,14 +303,14 @@
       .feedback { font-size: 18px; }
       .next-btn { min-width: 220px; font-size: 20px; padding: 12px 22px; }
       .actions { justify-content: center; }
-      #quiz { min-height: 480px; }
+      #quiz { min-height: 480px; padding-bottom: 90px; }
     }
   </style>
 </head>
 <body>
   <main class="card">
     <div class="top">
-      <div id="progress">Frage 1 / 5</div>
+      <div id="progress">1 / 5</div>
       <div id="points">Punkte: 0</div>
     </div>
 
@@ -294,9 +331,9 @@
   <script src="./deutsch_questions.js"></script>
   <script>
     const QUESTIONS_PER_RUN = 5;
-    const PICK_PER_CATEGORY = 5;
     const REVIEW_MIX_COUNT = 2;
     const AUTO_NEXT_DELAY = 650;
+    const WRONG_AUTO_NEXT_DELAY = 1400;
 
     let current = 0;
     let score = 0;
@@ -367,12 +404,15 @@
 
     function makeQuestions() {
       const bank = window.QUESTION_BANK;
+      // Morgen-Testmodus: nur Wortarten aktiv.
+      // Andere Kategorien bleiben deaktiviert.
       const merged = [
-        ...pickRandom(bank.wortart, PICK_PER_CATEGORY).map((q) => ({ ...q, category: "Wortart" })),
-        ...pickRandom(bank.artikel, PICK_PER_CATEGORY).map((q) => ({ ...q, category: "Artikel" })),
-        ...pickRandom(bank.wortbau, PICK_PER_CATEGORY).map((q) => ({ ...q, category: "Wortbau" })),
-        ...pickRandom(bank.pronomen, PICK_PER_CATEGORY).map((q) => ({ ...q, category: "Pronomen" }))
+        ...bank.wortart.map((q) => ({ ...q, category: "Wortart" }))
       ];
+      // Re-enable later if needed:
+      // ...bank.artikel.map((q) => ({ ...q, category: "Artikel" }))
+      // ...bank.wortbau.map((q) => ({ ...q, category: "Wortbau" }))
+      // ...bank.pronomen.map((q) => ({ ...q, category: "Pronomen" }))
 
       const mixedFromPrevious = pickRandom(previousWrongPool, REVIEW_MIX_COUNT);
       const mixedKeys = new Set(mixedFromPrevious.map((q) => `${q.category}::${q.question}`));
@@ -395,8 +435,9 @@
       answered = false;
       clearAutoNext();
       stopResultConfettiLoop();
+      document.body.classList.remove("result-mode");
       document.body.classList.remove("celebrate");
-      progressEl.textContent = `Frage ${current + 1} / ${questions.length}`;
+      progressEl.textContent = `${current + 1} / ${questions.length}`;
       pointsEl.textContent = `Punkte: ${score}`;
       categoryEl.textContent = q.category;
       questionEl.textContent = q.question;
@@ -473,6 +514,15 @@
       }
 
       const isLastQuestion = current === questions.length - 1;
+      if (!isCorrect) {
+        nextBtn.disabled = true;
+        nextBtn.classList.add("hidden");
+        autoNextTimer = setTimeout(() => {
+          nextQuestion();
+        }, WRONG_AUTO_NEXT_DELAY);
+        return;
+      }
+
       if (isCorrect && !isLastQuestion) {
         nextBtn.disabled = true;
         nextBtn.classList.add("hidden");
@@ -489,15 +539,21 @@
     function showResult() {
       clearAutoNext();
       stopResultConfettiLoop();
-      progressEl.textContent = "Fertig";
-      pointsEl.textContent = `Punkte: ${score}`;
+      document.body.classList.add("result-mode");
+      progressEl.textContent = "";
+      pointsEl.textContent = "";
       previousWrongPool = [...wrongQuestions];
+      const isPerfect = score === QUESTIONS_PER_RUN;
+      const praiseClass = isPerfect ? "result-text" : "result-text hidden";
+      const starsHtml = Array.from({ length: QUESTIONS_PER_RUN }, (_, i) => (
+        i < score ? '<span class="star-on">★</span>' : '<span class="star-off">☆</span>'
+      )).join("");
 
       quizEl.innerHTML = `
         <div class="result">
-          <h2 class="title">Fertig</h2>
+          <p class="${praiseClass}" ${isPerfect ? "" : "aria-hidden=\"true\""}>Super gemacht!</p>
+          <p class="stars" aria-label="Sterne">${starsHtml}</p>
           <div class="score">${score} / ${questions.length}</div>
-          <p class="result-text">Super gemacht!</p>
           <p class="small">Du wirst immer besser. Weiter so!</p>
         </div>
         <div class="actions">
@@ -527,6 +583,7 @@
     function restartQuiz() {
       clearAutoNext();
       stopResultConfettiLoop();
+      document.body.classList.remove("result-mode");
       current = 0;
       score = 0;
       makeQuestions();
