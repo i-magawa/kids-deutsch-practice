@@ -296,14 +296,81 @@
     }
 
     @media (max-width: 600px) {
-      .card { padding: 18px; }
-      .title { font-size: 24px; }
-      .question { font-size: 27px; }
-      .option { width: 88%; font-size: 24px; padding: 14px 12px; }
-      .feedback { font-size: 18px; }
-      .next-btn { min-width: 220px; font-size: 20px; padding: 12px 22px; }
-      .actions { justify-content: center; }
-      #quiz { min-height: 480px; padding-bottom: 90px; }
+      body {
+        min-height: 100dvh;
+        padding: 8px;
+      }
+      .card {
+        height: calc(100dvh - 16px);
+        padding: 12px 14px;
+        border-radius: 14px;
+      }
+      .top {
+        font-size: 14px;
+        margin-bottom: 8px;
+      }
+      .title {
+        font-size: 20px;
+        margin: 0 0 8px;
+      }
+      .category {
+        font-size: 12px;
+        margin-bottom: 6px;
+      }
+      .question {
+        font-size: 22px;
+        line-height: 1.2;
+        margin: 4px 0 10px;
+      }
+      .options {
+        gap: 8px;
+      }
+      .option {
+        width: 92%;
+        font-size: 20px;
+        padding: 10px 12px;
+      }
+      .option.correct::after,
+      .option.wrong::after {
+        left: 14px;
+        font-size: 22px;
+      }
+      .feedback {
+        min-height: 40px;
+        margin-top: 8px;
+        font-size: 16px;
+        line-height: 1.25;
+      }
+      .next-btn {
+        min-width: 180px;
+        font-size: 18px;
+        padding: 10px 18px;
+      }
+      .actions {
+        justify-content: center;
+        min-height: 56px;
+        bottom: 14px;
+      }
+      .stars {
+        font-size: 34px;
+      }
+      .score {
+        font-size: 40px;
+        margin: 6px 0 10px;
+      }
+      .result-text {
+        font-size: 25px;
+        min-height: 34px;
+        margin-bottom: 8px;
+      }
+      .small {
+        font-size: 16px;
+        margin-bottom: 14px;
+      }
+      #quiz {
+        min-height: 0;
+        padding-bottom: 82px;
+      }
     }
   </style>
 </head>
